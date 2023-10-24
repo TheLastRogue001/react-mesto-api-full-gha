@@ -1,0 +1,19 @@
+.header__components {
+  display: flex;
+  flex-direction: row;
+  column-gap: 24px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 900px) {
+  .header__components {
+    margin-right: 30px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header__components {
+    display: none;
+  }
+}

@@ -1,0 +1,7 @@
+.sign__components {
+  display: flex;
+  row-gap: 30px;
+  flex-direction: column;
+  margin-bottom: 216px;
+  width: 100%;
+}

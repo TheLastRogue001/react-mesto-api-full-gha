@@ -1,0 +1,13 @@
+.content {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  max-width: 880px;
+  width: 100%;
+  margin: 0 auto 66px;
+}
+@media screen and (max-width: 767px) {
+  .content {
+    margin: 2px auto 48px;
+  }
+}

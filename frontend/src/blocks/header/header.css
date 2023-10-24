@@ -1,0 +1,17 @@
+.header {
+  grid-area: header;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 880px;
+  width: 100%;
+  margin: 45px auto 40px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    margin: 28px auto 42px;
+  }
+}

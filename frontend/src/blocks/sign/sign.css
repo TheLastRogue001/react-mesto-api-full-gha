@@ -1,0 +1,12 @@
+.sign {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto 112px;
+  width: 358px;
+}
+
+@media screen and (max-width: 458px) {
+  .sign {
+    width: 258px;
+  }
+}

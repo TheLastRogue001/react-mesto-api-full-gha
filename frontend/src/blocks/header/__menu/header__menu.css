@@ -1,0 +1,15 @@
+.header__menu {
+  display: none;
+  margin: 0 30px 20px 0;
+  cursor: pointer;
+}
+
+.header__menu:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 500px) {
+  .header__menu {
+    display: inline-block;
+  }
+}
