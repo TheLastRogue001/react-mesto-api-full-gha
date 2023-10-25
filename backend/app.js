@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 require('dotenv').config();
+const cors = require('cors');
 const routerUsers = require('./routes/users');
 const routerCards = require('./routes/cards');
 const routerAuth = require('./routes/auth');
@@ -18,6 +19,7 @@ const {
 } = process.env;
 
 const app = express();
+app.use(cors());
 
 app.use(helmet());
 app.use(cookieParser());

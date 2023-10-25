@@ -60,12 +60,6 @@ const login = (req, res, next) => {
         .then((matched) => {
           if (!matched) return next(new UnauthorizedError('Неправильная почта или пароль'));
           const token = generateToken({ _id: user._id });
-          // res.cookie('jwt', token, {
-          //   maxAge: 3600000 * 24 * 7,
-          //   httpOnly: true,
-          //   sameSite: true,
-          //   secure: true,
-          // });
           return res.status(HTTP_STATUS_OK).send({ token });
         });
     })
@@ -113,7 +107,7 @@ const updateUserAvatar = (req, res, next) => {
   const { avatar } = req.body;
   User.findByIdAndUpdate(req.user._id, { avatar }, { new: true, runValidators: true })
     .then((user) => {
-      if (user) return res.send(avatar);
+      if (user) return res.send(user);
       return next(new NotFoundError('Пользователь с указанным _id не найден'));
     })
     .catch((err) => {

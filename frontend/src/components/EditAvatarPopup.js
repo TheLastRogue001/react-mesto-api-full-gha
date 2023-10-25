@@ -14,12 +14,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
 
     setSubmitButtonText("Сохранение...");
 
-    onUpdateAvatar(
-      {
-        avatar: avatar,
-      },
-      setSubmitButtonText
-    );
+    onUpdateAvatar(avatar, setSubmitButtonText);
   };
 
   return (

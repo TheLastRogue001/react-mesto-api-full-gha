@@ -44,7 +44,6 @@ function App() {
       auth
         .checkToken(token)
         .then((res) => {
-          console.log(res.email);
           setEmail(res.email);
           navigate("/", { replace: true });
         })
@@ -79,7 +78,7 @@ function App() {
   }, [loggedIn]);
 
   const handleCardLike = (likes, id) => {
-    const isLiked = likes.some((i) => i._id === currentUser?._id);
+    const isLiked = likes.some((id) => id === currentUser?._id);
 
     api
       .changeLikeCardStatus(id, !isLiked)
@@ -121,7 +120,7 @@ function App() {
       .finally(() => setSubmitButtonText("Сохранить"));
   };
 
-  const handleUpdateAvatar = ({ avatar }, setSubmitButtonText) => {
+  const handleUpdateAvatar = (avatar, setSubmitButtonText) => {
     api
       .updateAvatarProfile(avatar)
       .then((userData) => {
