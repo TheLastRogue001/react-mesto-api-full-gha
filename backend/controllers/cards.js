@@ -1,17 +1,22 @@
 /* eslint-disable max-len */
 const Card = require('../models/Card');
 const { HTTP_STATUS_OK } = require('../consts/consts');
-const { ForbiddenError, BadRequestError, NotFoundError } = require('../errors/errors');
+const {
+  ForbiddenError,
+  BadRequestError,
+  NotFoundError,
+} = require('../errors/errors');
 
 const getCards = (req, res, next) => {
   Card.find({})
-    .then((card) => res.send(card))
+    .then((cards) => res.send(cards))
     .catch((err) => next(err));
 };
 
 const createCard = (req, res, next) => {
   const { name, link } = req.body;
-  Card.create({ name, link, owner: req.user._id })
+  const owner = req.user._id;
+  Card.create({ name, link, owner })
     .then((card) => res.send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -29,7 +34,9 @@ const deleteCard = (req, res, next) => {
   const { cardId } = req.params;
   Card.findById(cardId)
     .then((card) => {
-      if (!card) { return next(new NotFoundError('Карточка по указанному _id не найдена')); }
+      if (!card) {
+        return next(new NotFoundError('Карточка по указанному _id не найдена'));
+      }
       if (card.owner.toString() !== req.user._id) {
         return next(
           new ForbiddenError('Разрешено удалять только свои карточки'),
@@ -38,7 +45,9 @@ const deleteCard = (req, res, next) => {
       return Card.findByIdAndDelete(cardId).then((deletedCard) => res.status(HTTP_STATUS_OK).send(deletedCard));
     })
     .catch((err) => {
-      if (err.name === 'CastError') { return next(new BadRequestError('Передан некорректный _id карточки')); }
+      if (err.name === 'CastError') {
+        return next(new BadRequestError('Передан некорректный _id карточки'));
+      }
       return next(err);
     });
 };
