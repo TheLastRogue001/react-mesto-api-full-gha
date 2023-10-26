@@ -44,7 +44,7 @@ app.use(handleError);
 
 async function init() {
   await mongoose.connect(MONGO_URL);
-  console.log('DB CONNECT');
+  console.log(`DB CONNECT ${MONGO_URL}`);
 
   await app.listen(PORT);
   console.log(`Server listen on port ${PORT}`);
