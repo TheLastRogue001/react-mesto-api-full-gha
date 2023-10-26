@@ -112,4 +112,4 @@ class Api {
   }
 }
 
-export const api = new Api({ baseUrl: "https://api.fox.nomoredomainsrocks.ru" });
+export const api = new Api({ baseUrl: "http://localhost:3000" });
