@@ -10,7 +10,7 @@ module.exports = {
     production: {
       user: 'sasha0908',
       host: '51.250.24.218',
-      ref: 'origin/master',
+      ref: 'origin/main',
       repo: 'git@github.com:TheLastRogue001/react-mesto-api-full-gha.git',
       path: '/home/sasha0908/auto-deploy',
       'pre-deploy-local':
