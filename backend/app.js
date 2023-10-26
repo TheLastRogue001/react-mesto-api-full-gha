@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 require('dotenv').config();
 const cors = require('cors');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const routerUsers = require('./routes/users');
 const routerCards = require('./routes/cards');
 const routerAuth = require('./routes/auth');
@@ -23,13 +24,13 @@ app.use(helmet());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(requestLogger);
 
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
-console.log('crash');
 
 app.use(routerAuth);
 
@@ -39,6 +40,8 @@ app.use(routerUsers);
 app.use(routerCards);
 
 app.use((req, res, next) => next(new NotFoundError('Такой страницы не существует')));
+
+app.use(errorLogger);
 
 app.use(errors());
 app.use(handleError);
