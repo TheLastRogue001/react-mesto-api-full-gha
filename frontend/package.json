@@ -18,7 +18,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && scp -r ./build/* sasha0908@51.250.24.218:/home/sasha0908/frontend"
   },
   "eslintConfig": {
     "extends": [
