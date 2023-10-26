@@ -14,19 +14,11 @@ const auth = require('./middlewares/auth');
 const { NotFoundError } = require('./errors/errors');
 const { handleError } = require('./middlewares/handleError');
 
-const { PORT = 3000, MONGO_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
-const corseAllowedOrigins = [
-  'http://fifteen.nomoredomainsrocks.ru/',
-  'https://fifteen.nomoredomainsrocks.ru/',
-];
+const { PORT = 3001, MONGO_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 
 const app = express();
 
-app.use(cors({
-  origin: corseAllowedOrigins,
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-}));
+app.use(cors());
 app.use(helmet());
 app.use(cookieParser());
 app.use(bodyParser.json());
