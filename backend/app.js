@@ -14,7 +14,7 @@ const auth = require('./middlewares/auth');
 const { NotFoundError } = require('./errors/errors');
 const { handleError } = require('./middlewares/handleError');
 
-const { PORT = 3001, MONGO_URL } = process.env;
+const { PORT = 3000, MONGO_URL } = process.env;
 
 const app = express();
 
