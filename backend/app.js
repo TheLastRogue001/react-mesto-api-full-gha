@@ -29,6 +29,7 @@ app.get('/crash-test', () => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
+console.log('crash');
 
 app.use(routerAuth);
 
